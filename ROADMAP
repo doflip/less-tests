@@ -1,0 +1,6 @@
+roadmap:
+  tasks:
+    - Add assertions.
+    - More user-friendly tests, semantic classes to help new LESS users follow what's happening.
+    - Comparison tests.
+    - Multiple versions of Less.js.

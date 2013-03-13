@@ -1,0 +1,59 @@
+//
+// Test Junk
+// -------------------------------------------------------------
+// selector interpolation
+
+
+@theme1: stark;
+@theme2: subtle;
+
+
+
+
+.@{theme1}:extend(.@{theme2}) {
+  &:extend(@{theme2}:hover);
+  color: red;
+}
+.@{theme1} {
+  &:extend(@{theme2}:hover);
+  height: 400px;
+}
+.@{theme2} {
+  background: black;
+  &:hover {
+    clear: both;
+  }
+}
+.@{theme2}:hover {
+  float: right;
+}
+
+
+.a {
+  color: black;
+}
+.b:extend(.a) {
+  one: one;
+}
+.c:extend(.b) {
+  two: two;
+}
+
+//very simple chaining, ordering not important
+
+.d:extend(.e, .a) {
+  three: three;
+}
+.e:extend(.f, .b) {
+  four: four;
+}
+.f {
+  color: black;
+}
+
+// #foo,
+// /* blah */
+// // bar
+// .bar {
+//   background:#000;
+// }
