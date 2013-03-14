@@ -29,3 +29,18 @@ grunt.registerTask('default', [
 ]);
 ```
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
+
+#### Fixtures
+`.less` source files.
+
+TBC...
+
+#### Expected
+`.css` files.
+
+TBC...
+
+#### Result
+Actual compiled `.css` files.
+
+TBC...

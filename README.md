@@ -60,6 +60,21 @@ grunt.registerTask('default', [
 ```
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
+#### Fixtures
+`.less` source files.
+
+TBC...
+
+#### Expected
+`.css` files.
+
+TBC...
+
+#### Result
+Actual compiled `.css` files.
+
+TBC...
+
 
 ### Options
 
@@ -308,4 +323,4 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated on Thu Mar 14 2013 05:16:58._
+_This file was generated on Thu Mar 14 2013 05:28:40._

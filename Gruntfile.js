@@ -17,13 +17,6 @@ module.exports = function(grunt) {
     less: grunt.file.readJSON('test/less.json'),
     pkg:  grunt.file.readJSON('package.json'),
 
-
-    // Run simple unit tests to detect changes in CSS files.
-    nodeunit: {
-      tests: ['test/test.js', 'test/fixtures/*_test.js'],
-      less:  ['less/test/*.js']
-    },
-
     // Run tests using 'assemble-styles' task
     styles: {
       // Global task options. Options can also be set for each target.
@@ -152,6 +145,12 @@ module.exports = function(grunt) {
       }
     },
 
+
+    // Run simple unit tests to detect changes in CSS files.
+    nodeunit: {
+      tests: ['test/fixtures/*_test.js'],
+      less:  ['less/test/*.js']
+    },
 
 
     jshint: {
