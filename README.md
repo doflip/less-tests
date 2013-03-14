@@ -5,15 +5,12 @@
 **Table of Contents**
 
 - [Getting Started](#getting-started)
-- ["styles" task](#the-styles-task)
-  - [Options](#options)
+- [The "styles" task](#the-styles-task)
+- [Options](#options)
 - [Examples](#usage-examples)
-  - [Default Options](#default-options)
-  - [Custom Options](#custom-options)
-  - [Twitter Bootstrap](#twitter-bootstrap)
 - [About](#about)
 - [Contributing](#contributing)
-- [Credit](#credit)
+- [Authors](#authors)
 - [Release History](#release-history)
 
 ## Quick start
@@ -311,4 +308,4 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated on Thu Mar 14 2013 05:09:42._
+_This file was generated on Thu Mar 14 2013 05:15:05._
