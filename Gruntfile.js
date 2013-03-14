@@ -14,8 +14,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project paths and files.
-    less: grunt.file.readJSON('test/less.json'),
-    pkg:  grunt.file.readJSON('package.json'),
+    less:  grunt.file.readJSON('test/less.json'),
+    pkg:   grunt.file.readJSON('package.json'),
 
     // Run tests using 'assemble-styles' task
     styles: {
@@ -182,11 +182,12 @@ module.exports = function(grunt) {
     assemble: {
       readme: {
         options: {
-          changelog: grunt.file.readYAML('CHANGELOG'),
-          roadmap:   grunt.file.readYAML('ROADMAP'),
           today: '<%= grunt.template.today() %>',
+          changelog: grunt.file.readYAML('CHANGELOG'),
+          roadmap: grunt.file.readYAML('ROADMAP'),
+          docs: grunt.file.readYAML('docs/docs.yml'),
           partials: ['docs/*.md','docs/templates/snippets/*.md'],
-          data: ['docs/docs.json'],
+          data: [],
           ext: '.md'
         },
         files: {

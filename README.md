@@ -92,7 +92,7 @@ Actual compiled `.css` files.
 TBC...
 
 
-### Options
+## Options
 
 These options will be passed through directly to [Less.js][]. See the [Less.js documentation](http://github.com/cloudhead/less.js) for a list of supported options.
 
@@ -154,7 +154,9 @@ Configures -sass-debug-info support.
 
 Accepts following values: `comments`, `mediaquery`, `all`.
 
-### Custom Options
+
+
+## Custom Options
 
 #### require
 Type: `String|Array`
@@ -197,12 +199,9 @@ The `.lessrc` file must be valid JSON and looks something like this:
 
 
 
+
+
 ### Under Consideration
-
-#### upstage
-Type: `Boolean`
-
-Make [Upstage](http://github.com/upstage/lib) library available and loads project configuration.
 
 #### globals
 Type: `Object`
@@ -213,7 +212,7 @@ Data object for defining global variables inside the Gruntfile which will be acc
 ---
 
 
-### Usage Examples
+## Usage Examples
 
 #### Compile
 
@@ -327,9 +326,8 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 * 2013-03-13    v0.1.1    Setup Grunt, nodeunit, first basic tests using [fixtures from Less.js](https://github.com/cloudhead/less.js/tree/master/test). 
 * 2013-03-12    v0.1.0    First commit. 
 
----
 
-## Roadmap
+### Roadmap
 * Add assertions.
 * More user-friendly tests, semantic classes to help new LESS users follow what's happening.
 * Comparison tests.
@@ -339,4 +337,4 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated on Thu Mar 14 2013 06:47:50._
+_This file was generated with Grunt and [assemble](http://github.com/assemble/assemble) on Thu Mar 14 2013 08:32:20._

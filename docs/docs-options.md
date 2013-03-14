@@ -59,7 +59,9 @@ Configures -sass-debug-info support.
 
 Accepts following values: `comments`, `mediaquery`, `all`.
 
-### Custom Options
+
+
+## Custom Options
 
 #### require
 Type: `String|Array`
@@ -76,12 +78,9 @@ Concatenate all source files by default. If you change the value to false, all s
 #### lessrc
 {{> externalize-options.md }}
 
+
+
 ### Under Consideration
-
-#### upstage
-Type: `Boolean`
-
-Make [Upstage](http://github.com/upstage/lib) library available and loads project configuration.
 
 #### globals
 Type: `Object`

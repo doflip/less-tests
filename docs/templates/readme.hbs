@@ -23,10 +23,10 @@ grunt.loadNpmTasks('{{ docs.name }}');
 ## Overview
 {{> docs-overview.md }}
 
-### Options
+## Options
 {{> docs-options.md }}
 
-### Usage Examples
+## Usage Examples
 {{> docs-examples.md }}
 
 
@@ -43,13 +43,12 @@ grunt.loadNpmTasks('{{ docs.name }}');
 ## Release History
 {{#if changelog}}{{#each changelog}}* {{ date }}    {{ @key }}    {{#each changes}}{{{.}}} {{/each}}
 {{/each}}{{else}}_(Nothing yet)_{{/if}}
----
 
-## Roadmap
+### Roadmap
 {{#if roadmap}}{{#each roadmap}}{{#each tasks}}* {{{.}}}
 {{/each}}{{/each}}{{else}}_(Big plans in the works)_{{/if}}
 ---
 
 Authored by [{{ docs.author.name }}]({{ docs.author.url }})
 
-_This file was generated on {{ today }}._
+_This file was generated with Grunt and [assemble](http://github.com/assemble/assemble) on {{ today }}._
