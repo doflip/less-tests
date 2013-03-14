@@ -6,9 +6,15 @@ lib-cov
 *.out
 *.pid
 *.gz
-
+npm-debug.log
+node_modules
 pids
 logs
 results
 
-npm-debug.log
+/tmp/
+/temp/
+/less/
+
+*.sublime-project
+*.sublime-workspace

@@ -1,0 +1,58 @@
+# [{{ docs.name }} v{{ docs.version }}](http://github.com/{{ docs.org }}/{{ docs.name }}){{#if docs.travis}} [![Build Status](https://travis-ci.org/{{docs.org}}/{{docs.name}}.png?branch={{docs.branch}})](https://travis-ci.org/{{docs.org}}/{{docs.name}}){{/if}}
+
+> {{{ docs.description }}}
+
+{{> toc.md }}
+
+{{#if docs.is-plugin}}
+## Getting Started
+This plugin requires Grunt `{{ docs.devDependencies.grunt }}`
+
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+```shell
+npm install {{{ docs.name }}}
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('{{ docs.name }}');
+```{{else}}{{#if docs.is-example}}{{> quick-start.md }}{{/if}}
+{{/if}}
+## The "styles" task
+_Run this task with the `grunt {{ docs.name }}` command._
+
+### Overview
+{{> docs-overview.md }}
+
+### Options
+{{> docs-options.md }}
+
+### Usage Examples
+{{> docs-examples.md }}
+
+
+## Contributing
+{{#if docs.contributing-section}}{{> docs-contributing.md }} {{/if}}{{#if docs.separate-contributing-file}}Please see the [Contributing to {{ docs.name }}](http://github.com/{{ docs.org }}/{{ docs.name }}/CONTRIBUTING.md) guide for information on contributing to this docs.{{else}}In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.{{/if}}
+
+
+## Authors
+{{> authors.md }}
+
+## About
+{{> docs-about.md }}
+
+## Release History
+{{#if changelog}}{{#each changelog}}* {{ date }}    {{ @key }}    {{#each changes}}{{{.}}} {{/each}}
+{{/each}}{{else}}_(Nothing yet)_{{/if}}
+---
+
+## Roadmap
+{{#if roadmap}}{{#each roadmap}}{{#each tasks}}* {{{.}}}
+{{/each}}{{/each}}{{else}}_(Big plans in the works)_{{/if}}
+---
+
+Authored by [{{ docs.author.name }}]({{ docs.author.url }})
+
+_This file was generated on {{ today }}._
