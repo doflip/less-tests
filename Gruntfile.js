@@ -196,8 +196,8 @@ module.exports = function(grunt) {
     },
     watch: {
       project: {
-        files: ['test/bootstrap/**/*.{less,json}'],
-        tasks: ['styles']
+        files: ['test/**/*.{less,json,js}'],
+        tasks: ['test']
       }
     }
 
