@@ -204,8 +204,8 @@ module.exports = function(grunt) {
   });
 
   // Load npm plugins to provide necessary tasks.
-  grunt.loadNpmTasks('styles');
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('assemble-styles');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
