@@ -24,7 +24,7 @@ Three quick start options are available:
 Inside the project folder run `npm install` to install the required dependencies.
 
 
-## The "less-tests" task
+## The "styles" task
 _Run this task with the `grunt less-tests` command._
 
 ### Overview
@@ -308,4 +308,4 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated on Thu Mar 14 2013 05:15:05._
+_This file was generated on Thu Mar 14 2013 05:16:58._
