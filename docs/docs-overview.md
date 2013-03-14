@@ -1,4 +1,4 @@
-In your project's Gruntfile, the `{{ docs.name }}` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
+In your project's Gruntfile, the `styles` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
 
 ```js
 grunt.initConfig({

@@ -1,52 +1,18 @@
 {
   "name": "less-tests",
-  "description": "LESS CSS test-suite. Run any kind of test on LESS stylesheets.",
   "version": "0.1.0",
-  "homepage": "https://github.com/upside/less-tests",
-  "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/upside/less-tests.git"
-  },
-  "bugs": {
-    "url": "https://github.com/upside/less-tests/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/upside/less-tests/blob/master/LICENSE-MIT"
-    }
-  ],
-  "keywords": [
-    "compile less",
-    "less conventions",
-    "less mixins",
-    "less variables",
-    "less nesting",
-    "css component",
-    "css modules",
-    "css testing",
-    "less css test",
-    "css tests",
-    "css preprocessor",
-    "grunt plugin",
-    "grunt task",
-    "grunt",
-    "less css compiler",
-    "less to sass",
-    "lesscss",
-    "less css",
-    "less css tutorial",
-    "less css framework",
-    "less css import",
-    "less library",
-    "less style sheet",
-    "less styles",
-    "less stylesheet",
-    "less",
-    "less.js"
-  ]
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "assemble": "~0.3.11",
+    "assemble-styles": "~0.2.2",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-mocha-test": "~0.2.0",
+    "testem": "~0.2.68",
+    "chai": "~1.5.0"
+  }
 }
+
