@@ -24,10 +24,9 @@ Three quick start options are available:
 Inside the project folder run `npm install` to install the required dependencies.
 
 
-## The "test" task
-_Run tests with the `grunt tests` command._
+## Overview
+_Compile LESS files and run tests with the `grunt test` command._
 
-### Overview
 In your project's Gruntfile, the `styles` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
 
 ```js
@@ -323,4 +322,4 @@ Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more informa
 
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated on Thu Mar 14 2013 06:28:55._
+_This file was generated on Thu Mar 14 2013 06:33:57._
