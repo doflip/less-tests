@@ -231,7 +231,6 @@ module.exports = function(grunt) {
   // Tests to be run.
   grunt.registerTask('test', [
     'default',
-    'readme',
     'jshint',
     'nodeunit:tests'
   ]);
