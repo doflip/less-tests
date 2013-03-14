@@ -1,27 +1,27 @@
 {
   "name": "<%= pkg.name %>",
   "proper": "LESS Tests",
-  "username": "upstage",
-  "org": "upstage",
-  "branch": "master",
 
   "description": "<%= pkg.description %>",
   "version": "<%= pkg.version %>",
-
   "author": {
     "name": "<%= pkg.author.name %>",
     "url": "<%= pkg.author.url %>"
   },
+
+  "org": "upstage",
+  "username": "upstage",
+  "branch": "master",
   
   "license": "<%= pkg.license %>",
   "separate-contributing-file": false,
   "contributing-section": false,
 
   "development": false,
-  "is-example": true,
-  "is-plugin": false,
-  "bower": false,
-  "travis": true,
+  "is-example" : true,
+  "is-plugin"  : false,
+  "bower"      : false,
+  "travis"     : true,
 
   "devDependencies": {
     "grunt": "<%= pkg.devDependencies.grunt %>"

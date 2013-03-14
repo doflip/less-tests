@@ -1,0 +1,39 @@
+# Grab some data from package.json for docs, then fill in the blanks
+
+# Repo name
+name: <%= pkg.name %>
+
+# Repo "proper" name
+proper: LESS Tests
+
+# Org or user that the repo belongs to
+org: upstage
+username: upstage
+
+# Repo info, mostly from package.json
+description: <%= pkg.description %>
+version: <%= pkg.version %>
+author:
+  name: <%= pkg.author.name %>
+  url: <%= pkg.author.url %>
+branch: master
+license: <%= pkg.license %>
+devDependencies:
+  grunt: <%= pkg.devDependencies.grunt %>
+
+# Is this repo an example, or a Grunt plugin?
+is-example: true
+is-plugin: false
+
+# Is there a separate CONTRIBUTING.md file?
+separate-contributing-file: false
+
+# Is there a custom section-contributing.md doc?
+contributing-section: false
+
+# If true, adds a section for Bower.
+bower: false
+
+# If true, adds badge and link for Travis CI
+travis: true
+
