@@ -17,3 +17,4 @@ logs
 
 *.sublime-project
 *.sublime-workspace
+test/libs/
