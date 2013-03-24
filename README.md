@@ -1,55 +1,66 @@
-# [less-tests v0.1.0](http://github.com/upstage/less-tests) [![Build Status](https://travis-ci.org/upstage/less-tests.png?branch=master)](https://travis-ci.org/upstage/less-tests)
+# [LESS Tests v0.2.1](http://github.com/upstage/less-tests) [![Build Status](https://travis-ci.org/upstage/less-tests.png)](https://travis-ci.org/upstage/less-tests)
 
 > LESS CSS test-suite. Run any kind of test on LESS stylesheets.
 
+
+_This project just launched **so expect frequent changes**._ And if you find this project interesting please consider starring it to receive updates.
+
+### Getting Help
+
+LESS Tests has many more features than we've been able to document thus far. So while we work to improve the docs, _please let us know if you have any questions or have any trouble getting LESS Tests to work. And feel free to create an [Issue][issues], we're here to help._
+
+#### [Please visit the wiki](http://github.com/upstage/less-tests/wiki) 
 **Table of Contents**
 
 - [Getting Started](#getting-started)
-- [The "styles" task](#the-styles-task)
-- [Options](#options)
+- [The "less" task](#the-less-task)
+  - [Options](#options)
 - [Examples](#usage-examples)
 - [About](#about)
 - [Contributing](#contributing)
 - [Authors](#authors)
+- [Credit](#credit)
 - [Release History](#release-history)
 
 ## Quick start
 
-Three quick start options are available:
+This plugin requires Grunt `~0.4.1`
 
-* [Download the latest release](https://github.com/upstage/less-tests/zipball/master).
-* Clone the repo: `git clone git://github.com/upstage/less-tests.git`.
-* Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install less-tests`.
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to read the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. 
 
+Then install [the required local dependencies](package.json) and this plugin with this command:
 
-### Compile CSS and Run Tests
-`less-tests` provides convenient methods for compiling and running tests on LESS and CSS file. Before getting started, be sure to install [the required local dependencies](package.json):
-
-```
+```shell
 $ npm install
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('less-tests');
 ```
 
 When completed, you'll be able to run the various `grunt` commands provided:
 
-#### build - `grunt`
-Runs the Less.js compiler to rebuild the specified `/test/fixtures/*.less` files. Requires [Less.js](http://github.com/cloudhead/less.js) and [assemble-styles](http://github.com/assemble/assemble-styles).
-
-#### test - `grunt test`
-Runs jshint on JavaScripts and nodeunit tests on CSS file. Yeah, I know, but I'm hoping this will pave the way or inspire a better solution.
+#### compile - `grunt less`
+Runs the Less.js compiler to rebuild the specified `/test/fixtures/*.less` files.  Requires [Less.js](http://github.com/cloudhead/less.js) and [assemble-less](http://github.com/assemble/assemble-less).
 
 #### watch - `grunt watch`
-This is a convenience method for watching all Less files and automatically re-building them whenever you save. Requires the [grunt-contrib-watch](http://github.com/gruntjs/grunt-contrib-watch) Grunt plugin.
+This is a convenience task to "Run predefined tasks whenever watched file patterns are added, changed or deleted". Requires [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch), `npm i grunt-contrib-watch`.
 
 Should you encounter problems with installing dependencies or running the `grunt` commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
-## Overview
-In your project's Gruntfile, the `styles` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
+
+
+## The "less" task
+
+In your project's Gruntfile, the `less` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
 
 ```js
 grunt.initConfig({
   // This is a task
-  styles: {
+  less: {
     options: {
       // Task-specific options go here.
     },
@@ -67,40 +78,90 @@ grunt.initConfig({
     ...
   }
 });
-grunt.loadNpmTasks('styles');
+grunt.loadNpmTasks('assemble-less');
 
 grunt.registerTask('default', [
   'jshint', 
-  'styles'
+  'less'
 ]);
 ```
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
-#### Fixtures
-`.less` source files.
 
-TBC...
-
-#### Expected
-`.css` files.
-
-TBC...
-
-#### Result
-Actual compiled `.css` files.
-
-TBC...
 
 
 ## Options
 
-These options will be passed through directly to [Less.js][]. See the [Less.js documentation](http://github.com/cloudhead/less.js) for a list of supported options.
+### Custom Options
+
+> Options developed specifically for the `assemble-less` plugin
+
+
+#### lessrc
+Type: `String`
+Default value: `null`
+
+A convenience option for externalizing task options into a `.lessrc` file. If this file is specified, options defined therein will be used. 
+
+``` javascript
+less: {
+  options: grunt.file.readJSON('.lessrc')
+}
+```
+The `.lessrc` file must be valid JSON and looks something like this:
+
+``` json
+{
+  "require": null,
+  "concat": false,
+  "compress": false,
+  "yuicompress": false,
+  "optimization": 03,
+  "strictImports": true,
+  "dumpLineNumbers": false,
+  "strictMaths": false,
+  "strictUnits": false
+}
+```
+
+#### require
+Type: `String|Array`
+Default: _empty string_
+
+Specified files will be _prepended_ to the beginning of src files, **_not_** to the concatenated output. This feature is useful for "inlining" globaly-required LESS files, such as `variables` or `mixins`, so that _they do not need to be referenced with `@import` statements inside any individual files_.
+
+#### concat
+Type: `Boolean`
+Default: _true_
+
+Concatenate all source files by default. If you change the value to false, all source files will compile into individual files.
+
+#### version
+Type: `String`
+Default: _less_
+
+Specify the version of Less.js that you wish to use for compiling to CSS. Useful for testing.
+
+
+#### globals (under consideration)
+Type: `Object`
+Default: _null_
+
+Data object for defining global variables inside the Gruntfile which will be accessible in LESS files.  
+
+
+
+### Standard Options
+
+> These options will be passed through directly to [Less.js](http://github.com/cloudhead/less.js)
+
+See the [Less.js documentation](http://github.com/cloudhead/less.js) for more info about supported options.
 
 #### paths
 Type: `String|Array`
 Default: _Directory of input files_
 
-Specifies directories to scan for `@import` directives when parsing. The default value is the directory of the specified source files. In other words, the `paths` option allows you to specify paths for your @import statements in the [styles](http://github.com/assemble/styles) task, as an alternative to specifying a path on every `@import` statement that appears throughout your LESS files. So instead of doing this:
+Specifies directories to scan for `@import` directives when parsing. The default value is the directory of the specified source files. In other words, the `paths` option allows you to specify paths for your @import statements in the `less` task, as an alternative to specifying a path on every `@import` statement that appears throughout your LESS files. So instead of doing this:
 
 ``` css
 @import "path/to/my/less/files/mixins/mixins.less";
@@ -150,64 +211,8 @@ Force strict evaluation of units. If set to `false` the compiler will not throw 
 Type: `String`
 Default: _false_
 
-Configures -sass-debug-info support.
+Configures `-sass-debug-info` support. Accepts following values: `comments`, `mediaquery`, `all`.
 
-Accepts following values: `comments`, `mediaquery`, `all`.
-
-
-
-## Custom Options
-
-#### require
-Type: `String|Array`
-Default: _empty string_
-
-Specified files will be _prepended_ to the beginning of src files, **_not_** to the concatenated output. This feature is useful for "inlining" globaly-required LESS files, such as `variables` or `mixins`, so that _they do not need to be referenced with `@import` statements inside any individual files_.
-
-#### concat
-Type: `Boolean`
-Default: _true_
-
-Concatenate all source files by default. If you change the value to false, all source files will compile into individual files.
-
-#### lessrc
-Type: `String`
-Default value: `null`
-
-If this filename is specified, options defined therein will be used. 
-
-``` javascript
-styles: {
-  options: grunt.file.readJSON('.lessrc')
-}
-```
-The `.lessrc` file must be valid JSON and looks something like this:
-
-``` json
-{
-  "require": null,
-  "concat": false,
-  "compress": false,
-  "yuicompress": false,
-  "optimization": 3,
-  "strictImports": true,
-  "dumpLineNumbers": false,
-  "strictMaths": false,
-  "strictUnits": false
-}
-```
-
-
-
-
-
-### Under Consideration
-
-#### globals
-Type: `Object`
-Default: _null_
-
-Data object for defining global variables inside the Gruntfile which will be accessible in LESS files. Templates can be used to 
 
 ---
 
@@ -217,7 +222,7 @@ Data object for defining global variables inside the Gruntfile which will be acc
 #### Compile
 
 ```javascript
-styles: {
+less: {
   selectors_test: {
     files: {
       'selectors.css': ['selectors.less']
@@ -231,7 +236,7 @@ styles: {
 As an alternative to using `@import` to "inline" `.less` files, you can specify an array of `src` paths and they will be concatenated. 
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['reset.less', 'test.less']
@@ -245,7 +250,7 @@ styles: {
 You can specify multiple `destination: [source]` items in `files`.
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['test.less'],
@@ -260,7 +265,7 @@ styles: {
 In this example, the `paths` and `requires` options are used:
 
 ```js
-styles: {
+less: {
   development: {
     options: {
       paths: ['test/fixtures'],
@@ -300,13 +305,30 @@ debug: {
 ```
 For more on glob pattern syntax, see the [node-glob](https://github.com/isaacs/node-glob) and [minimatch](https://github.com/isaacs/minimatch) documentation.
 
+## About
+
+This project uses the extremely flexible [assemble-less](http://github.com/assemble/assemble-less) Grunt plugin for compiling LESS to CSS. The `less` plugin leverages JSON and underscore for defining any number of LESS "bundles", UI components, compressed stylesheets or themes.
+
+### Companion projects
+* [assemble](http://github.com/assemble/assemble): a Grunt plugin for **quickly launching static web projects** by emphasizing a strong separation of concerns between structure, style, content and configuration.
+* [assemble-less](http://github.com/upside/less-tests): a LESS / CSS test-suite that uses [assemble-less](http://github.com/assemble/assemble-less) to enable you to run any kind of test on LESS stylesheets.
+
+
+### Credit
+This [Grunt.js](http://github.com/gruntjs/grunt) plugin and some of the documentation on this page, is derived from [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less), authored by [Tyler Kellen](https://github.com/tkellen). This plugin was modified for this project to `concat` LESS files first, and then compile them into CSS files. This allows for prepending globally required LESS files, and it also adds the ability to build out individual CSS files, rather than building a single conctatenated file.
+
+
 
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.
 
+Want to help make **less-tests** even better? All constructive feedback and contributions are welcome, so please consider contributing!  We can always use help creating, tests, documentation or resolving [Issues](https://github.com/upstage/less-tests/issues), but if you have other ideas for how you can help, Brian and I would love to hear them!
+
+[https://github.com/upstage/less-tests/issues](http://github.com/upstage/less-tests/issues)
+ 
 
 ## Authors
+
 **Jon Schlinkert**
 
 + [http://twitter.com/jonschlinkert](http://twitter.com/jonschlinkert)
@@ -317,24 +339,98 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 + [http://twitter.com/doowb](http://twitter.com/doowb)
 + [http://github.com/doowb](http://github.com/doowb)
 
-## About
-This project uses the extremely flexible [assemble-styles](http://github.com/assemble/assemble-styles) Grunt plugin for compiling LESS to CSS. The `styles` plugin leverages JSON and underscore for defining any number of LESS "bundles", UI components, compressed stylesheets or themes.
+## Copyright and license
+Copyright 2013 Assemble
 
-Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more information.
+[MIT License](LICENSE-MIT)
 
 ## Release History
-* 2013-03-13    v0.1.1    Setup Grunt, nodeunit, first basic tests using [fixtures from Less.js](https://github.com/cloudhead/less.js/tree/master/test). 
-* 2013-03-12    v0.1.0    First commit. 
+* 2013-03-17    v0.3.0    Adds new option to specify the version of less.js to use for compiling to CSS 
+* 2013-03-14    v0.2.3    adds new options from Less.js 1.4.0 
+* 2013-03-09    v0.2.0    in bootstrap.json, changed the path to bootstrap folder, new globals object new targets for single component, bootstrap.less lib, ignore pattern. 
+* 2013-03-08    v0.1.7    Enhanced boostrap.json model. Many task improvements. Greatly improved examples, readme updates. 
+* 2013-02-27    v0.1.2    Add support for requires option Add support for concat option 
+* 2013-02-27    v0.1.0    First commit. 
 
 
 ### Roadmap
-* Add assertions.
-* More user-friendly tests, semantic classes to help new LESS users follow what's happening.
-* Comparison tests.
-* Multiple versions of Less.js.
+* Options for upcoming features in Less.js, such as 'silentImport'.
+* variables option for modifying LESS variables directly inside the Gruntfile.
+* upstage option for importing components from the [upstage](http://github.com/upstage) component library.
+
 
 ---
-
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated with Grunt and [assemble](http://github.com/assemble/assemble) on Thu Mar 14 2013 08:32:20._
+_This file was generated using Grunt and [assemble](http://github.com/assemble/assemble) on Sun Mar 24 2013 15:03:14._
+
+
+
+
+[download]: https://github.com/upstage/less-tests/zipball/master
+
+
+[org]: https://github.com/assemble
+[assemble]: https://github.com/assemble/assemble
+[issues]: https://github.com/assemble/assemble/issues
+[wiki]: https://github.com/assemble/assemble/wiki
+
+
+
+[config]: https://github.com/assemble/assemble/wiki/Configuration
+[gruntfile]: https://github.com/assemble/assemble/wiki/Gruntfile
+[tasks]: https://github.com/assemble/assemble/wiki/Task-and-Targets
+[options]: https://github.com/assemble/assemble/wiki/Options
+
+
+[templates]: https://github.com/assemble/assemble/wiki/Templates
+[layouts]: https://github.com/assemble/assemble/wiki/Layouts
+[pages]: https://github.com/assemble/assemble/wiki/Pages
+[partials]: https://github.com/assemble/assemble/wiki/Partials
+
+
+[content]: https://github.com/assemble/assemble/wiki/Content
+[data]: https://github.com/assemble/assemble/wiki/Data
+[yaml]: https://github.com/assemble/assemble/wiki/YAML-front-matter
+[markdown]: https://github.com/assemble/assemble/wiki/Markdown
+
+
+[helpers]: https://github.com/assemble/assemble/wiki/Helpers
+[assets]: https://github.com/assemble/assemble/wiki/Assets
+[collections]: https://github.com/assemble/assemble/wiki/Collections
+
+
+[examples]: https://github.com/assemble/assemble-examples
+[exampleReadme]: https://github.com/assemble/assemble-examples-readme
+[exampleBasic]: https://github.com/assemble/assemble-examples-basic
+[exampleAdvanced]: https://github.com/assemble/assemble-examples-advanced
+[exampleGrid]: https://github.com/assemble/assemble-examples-grid
+[exampleTable]: https://github.com/assemble/assemble-examples-table
+[exampleForm]: https://github.com/assemble/assemble-examples-form
+[exampleSite]: https://github.com/assemble/assemble-examples-site
+[exampleSitemap]: https://github.com/assemble/assemble-examples-sitemap
+
+
+[contribute]: https://github.com/assemble/assemble/wiki/Contributing-to-Assemble
+[extend]: https://github.com/assemble/assemble/wiki/Extending-Assemble
+[helpers-lib]: https://github.com/assemble/assemble/wiki/Helpers
+
+
+[grunt]: http://gruntjs.com/
+[upgrading]: http://gruntjs.com/upgrading-from-0.3-to-0.4
+[getting-started]: http://gruntjs.com/getting-started
+[package]: https://npmjs.org/doc/json.html
+
+
+[assemble]: https://github.com/assemble/assemble
+[pre]: https://github.com/assemble/pre
+[dry]: https://github.com/assemble/dry
+[assemble-github-com]: https://github.com/assemble/assemble.github.com
+[assemble-examples-bootstrap]: https://github.com/assemble/assemble-examples-bootstrap
+[assemble-internal]: https://github.com/assemble/assemble-internal
+[assemble-less]: https://github.com/assemble/assemble-less
+[assemble-examples-readme]: https://github.com/assemble/assemble-examples-readme
+[grunt-toc]: https://github.com/assemble/grunt-toc
+[helper-lib]: https://github.com/assemble/helper-lib
+[grunt-dry]: https://github.com/assemble/grunt-dry
+[assemble-examples]: https://github.com/assemble/assemble-examples

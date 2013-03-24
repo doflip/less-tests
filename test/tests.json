@@ -1,0 +1,158 @@
+{
+  "name": "tests.js",
+  "notes": "JSON and underscore templates make it easier to define reusable paths, bundles and other variables for testing your LESS and CSS.",
+  "fixtures": "./test/fixtures",
+
+  "compression": "<%= tests.fixtures %>/compression/compression.less",
+  "debug": {
+    "import"     : "<%= tests.fixtures %>/debug/import/test.less",
+    "linenumbers": "<%= tests.fixtures %>/debug/linenumbers.less"
+  },
+  "errors": {
+    "fixtures":"<%= tests.fixtures %>/errors",
+    "imports": [
+      "<%= tests.fixtures %>/errors/imports",
+      "<%= tests.fixtures %>/errors/imports/subfolders"
+    ]
+  },
+  "styles": {
+    "result": "./test/actual/version-tests",
+
+    "charsets"            : "<%= tests.fixtures %>/charsets.less",
+    "colors"              : "<%= tests.fixtures %>/colors.less",
+    "comments"            : "<%= tests.fixtures %>/comments.less",
+    "css_3"               : "<%= tests.fixtures %>/css-3.less",
+    "css_escapes"         : "<%= tests.fixtures %>/css-escapes.less",
+    "css"                 : "<%= tests.fixtures %>/css.less",
+    "extend"              : "<%= tests.fixtures %>/extend.less",
+    "extend_chaining"     : "<%= tests.fixtures %>/extend-chaining.less",
+    "extend_clearfix"     : "<%= tests.fixtures %>/extend-clearfix.less",
+    "extend_exact"        : "<%= tests.fixtures %>/extend-exact.less",
+    "extend_media"        : "<%= tests.fixtures %>/extend-media.less",
+    "extend_nest"         : "<%= tests.fixtures %>/extend-nest.less",
+    "extend_selector"     : "<%= tests.fixtures %>/extend-selector.less",
+    "functions"           : "<%= tests.fixtures %>/functions.less",
+    "ie_filters"          : "<%= tests.fixtures %>/ie-filters.less",
+    "import"              : "<%= tests.fixtures %>/import.less",
+    "import_once"         : "<%= tests.fixtures %>/import-once.less",
+    "import_interpolation": "<%= tests.fixtures %>/import-interpolation.less",
+    "javascript"          : "<%= tests.fixtures %>/javascript.less",
+    "lazy_eval"           : "<%= tests.fixtures %>/lazy-eval.less",
+    "media"               : "<%= tests.fixtures %>/media.less",
+    "mixins"              : "<%= tests.fixtures %>/mixins.less",
+    "mixins_args"         : "<%= tests.fixtures %>/mixins-args.less",
+    "mixins_closure"      : "<%= tests.fixtures %>/mixins-closure.less",
+    "mixins_guards"       : "<%= tests.fixtures %>/mixins-guards.less",
+    "mixins_important"    : "<%= tests.fixtures %>/mixins-important.less",
+    "mixins_named_args"   : "<%= tests.fixtures %>/mixins-named-args.less",
+    "mixins_nested"       : "<%= tests.fixtures %>/mixins-nested.less",
+    "mixins_pattern"      : "<%= tests.fixtures %>/mixins-pattern.less",
+    "operations"          : "<%= tests.fixtures %>/operations.less",
+    "parens"              : "<%= tests.fixtures %>/parens.less",
+    "rulesets"            : "<%= tests.fixtures %>/rulesets.less",
+    "scope"               : "<%= tests.fixtures %>/scope.less",
+    "selectors"           : "<%= tests.fixtures %>/selectors.less",
+    "strict_maths"        : "<%= tests.fixtures %>/strict-maths.less",
+    "strings"             : "<%= tests.fixtures %>/strings.less",
+    "urls"                : "<%= tests.fixtures %>/urls.less",
+    "variables"           : "<%= tests.fixtures %>/variables.less",
+    "whitespace"          : "<%= tests.fixtures %>/whitespace.less"
+  },
+
+  "charsets": "<%= tests.styles.charsets %>",
+  "colors"  : "<%= tests.styles.colors %>",
+  "comments": "<%= tests.styles.comments %>",
+
+  "css": [
+    "<%= tests.styles.css_3 %>", 
+    "<%= tests.styles.css_escapes %>", 
+    "<%= tests.styles.css %>"
+  ],
+
+  "extend": [
+    "<%= tests.styles.extend %>",
+    "<%= tests.styles.extend_chaining %>",
+    "<%= tests.styles.extend_clearfix %>",
+    "<%= tests.styles.extend_exact %>",
+    "<%= tests.styles.extend_media %>",
+    "<%= tests.styles.extend_nest %>",
+    "<%= tests.styles.extend_selector %>"
+  ],
+
+  "functions": "<%= tests.styles.functions %>",
+  "iefilters": "<%= tests.styles.iefilters %>",
+
+  "import": [
+    "<%= tests.styles.import %>",
+    "<%= tests.styles.import_once %>",
+    "<%= tests.styles.import_interpolation %>"
+  ],
+  "javascript": "<%= tests.styles.javascript %>",
+  "lazy_eval" : "<%= tests.styles.lazy_eval %>",
+  "media"     : "<%= tests.styles.media %>",
+
+  "mixins": [
+    "<%= tests.styles.mixins %>",
+    "<%= tests.styles.mixins_args %>",
+    "<%= tests.styles.mixins_closure %>",
+    "<%= tests.styles.mixins_guards %>",
+    "<%= tests.styles.mixins_important %>",
+    "<%= tests.styles.mixins_named_args %>",
+    "<%= tests.styles.mixins_nested %>",
+    "<%= tests.styles.mixins_pattern %>"
+  ],
+
+  "operations"  : "<%= tests.styles.operations %>",
+  "parens"      : "<%= tests.styles.parens %>",
+  "rulesets"    : "<%= tests.styles.rulesets %>",
+  "scope"       : "<%= tests.styles.scope %>",
+  "selectors"   : "<%= tests.styles.selectors %>",
+  "strict_maths": "<%= tests.styles.strict_maths %>", 
+  "strings"     : "<%= tests.styles.strings %>",
+  "urls"        : "<%= tests.styles.urls %>",
+  "variables"   : "<%= tests.styles.variables %>",
+  "whitespace"  : "<%= tests.styles.whitespace %>",
+
+  "all": [
+    "<%= tests.styles.charsets %>",
+    "<%= tests.styles.colors %>",
+    "<%= tests.styles.comments %>",
+    "<%= tests.styles.css_3 %>", 
+    "<%= tests.styles.css_escapes %>", 
+    "<%= tests.styles.css %>", 
+    "<%= tests.styles.extend %>",
+    "<%= tests.styles.extend_chaining %>", 
+    "<%= tests.styles.extend_clearfix %>", 
+    "<%= tests.styles.extend_exact %>",
+    "<%= tests.styles.extend_media %>",
+    "<%= tests.styles.extend_nest %>", 
+    "<%= tests.styles.extend_selector %>", 
+    "<%= tests.styles.functions %>", 
+    "<%= tests.styles.ie_filters %>",
+    "<%= tests.styles.import %>",
+    "<%= tests.styles.import_once %>", 
+    "<%= tests.styles.import_interpolation %>",
+    "<%= tests.styles.javascript %>",
+    "<%= tests.styles.lazy_eval %>", 
+    "<%= tests.styles.media %>", 
+    "<%= tests.styles.mixins %>",
+    "<%= tests.styles.mixins_args %>", 
+    "<%= tests.styles.mixins_closure %>",
+    "<%= tests.styles.mixins_guards %>", 
+    "<%= tests.styles.mixins_important %>",
+    "<%= tests.styles.mixins_named_args %>",
+    "<%= tests.styles.mixins_nested %>", 
+    "<%= tests.styles.mixins_pattern %>",
+    "<%= tests.styles.operations %>",
+    "<%= tests.styles.parens %>",
+    "<%= tests.styles.rulesets %>",
+    "<%= tests.styles.scope %>", 
+    "<%= tests.styles.selectors %>", 
+    "<%= tests.styles.strict_maths %>", 
+    "<%= tests.styles.strings %>", 
+    "<%= tests.styles.urls %>",
+    "<%= tests.styles.variables %>", 
+    "<%= tests.styles.whitespace %>"
+  ]
+}
+

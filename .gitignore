@@ -14,6 +14,10 @@ logs
 /tmp/
 /temp/
 /less/
+/test/result/
+/test/versions/
+test/result
 
 *.sublime-project
 *.sublime-workspace
+test/libs/
