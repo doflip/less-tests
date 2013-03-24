@@ -1,7 +1,7 @@
 {
   "name": "less-tests",
   "description": "LESS CSS test-suite. Run any kind of test on LESS stylesheets.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/upside/less-tests",
   "author": {
     "name": "Jon Schlinkert",

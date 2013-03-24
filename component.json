@@ -1,6 +1,6 @@
 {
   "name": "less-tests",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "main": "Gruntfile.js",
   "dependencies": {
     "assemble": "~0.3.11",
