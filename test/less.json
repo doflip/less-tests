@@ -1,16 +1,13 @@
 {
   "name": "Less.js",
-  "version": "",
-  "notes": "Example of using JSON with underscore templates to create tests for LESS using Less.js. ",
+  "notes": "JSON and underscore templates make it easier to define reusable paths, bundles and other variables for testing LESS.",
   "fixtures": "./test/fixtures",
 
   "compression": "<%= less.fixtures %>/compression/compression.less",
-
   "debug": {
     "import"     : "<%= less.fixtures %>/debug/import/test.less",
     "linenumbers": "<%= less.fixtures %>/debug/linenumbers.less"
   },
-
   "errors": {
     "fixtures":"<%= less.fixtures %>/errors",
     "imports": [
@@ -18,8 +15,9 @@
       "<%= less.fixtures %>/errors/imports/subfolders"
     ]
   },
-
   "test": {
+    "result": "./test/actual/version-tests",
+
     "charsets"            : "<%= less.fixtures %>/charsets.less",
     "colors"              : "<%= less.fixtures %>/colors.less",
     "comments"            : "<%= less.fixtures %>/comments.less",

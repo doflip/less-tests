@@ -1,8 +1,8 @@
 /*
  * less-tests
- * http://github.com/upside/less-tests
+ * http://github.com/upstage/less-tests
  *
- * Copyright (c) 2013 Upside
+ * Copyright (c) 2013 Upstage
  * MIT License
  */
 
@@ -14,22 +14,80 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project paths and files.
-    less:  grunt.file.readJSON('test/less.json'),
-    pkg:   grunt.file.readJSON('package.json'),
+    bootstrap: grunt.file.readJSON('test/bootstrap.json'),
+    less:      grunt.file.readJSON('test/less.json'),
+    pkg:       grunt.file.readJSON('package.json'),
 
-    // Run tests using 'assemble-styles' task
+    // Run tests using 'styles' task
     styles: {
       // Global task options. Options can also be set for each target.
       options: {
+        // version: 'less',
         require: '',
         concat: false,
-        compress: false,    // whether to compress
-        yuicompress: false,  // whether to compress with YUI
-        optimization: 3,
-        strictImports: true,
+        compress: false,    
+        optimization: 1,
+        yuicompress: false,  
         dumpLineNumbers: false,
-        strictMaths: false,  // whether maths has to be within parenthesis
-        strictUnits: false    // whether units need to evaluate correctly
+        processImports: false,
+        strictImports: true,
+        strictMaths: true,  
+        strictUnits: true  
+      },
+
+      // Compile bootstrap.less
+      less_1_4_0: {
+        version: './test/versions/1.4.0-b1',
+        src:  ['<%= bootstrap.lib %>'],
+        dest: 'test/result/bootstrap-less_140'
+      },
+
+      // Compile bootstrap.less
+      less_1_3_3: {
+        version: './test/versions/1.3.3',
+        src:  ['<%= bootstrap.lib %>'],
+        dest: 'test/result/bootstrap-less_133'
+      },
+
+      // Compile bootstrap.less
+      less_1_3_2: {
+        version: './test/versions/1_3_2',
+        src:  ['<%= bootstrap.lib %>'],
+        dest: 'test/result/bootstrap-less_132'
+      },
+
+      // Compile bootstrap.less
+      less_1_2_0: {
+        version: './test/versions/1_2_0',
+        src:  ['<%= bootstrap.lib %>'],
+        dest: 'test/result/bootstrap-less_120'
+      },
+
+
+      // Test LESS versions with Bootstrap "bundles"
+      bundles_1_4_0: {
+        version: './test/versions/1.4.0-b1',
+        files: {
+          'test/result/1.4.0/bundle/bootstrap.css': ['<%= bootstrap.lib %>'],
+          'test/result/1.4.0/bundle/core.css':      ['<%= bootstrap.less.core %>'],
+          'test/result/1.4.0/bundle/common.css':    ['<%= bootstrap.less.common %>'],
+          'test/result/1.4.0/bundle/nav.css':       ['<%= bootstrap.less.nav %>'],
+          'test/result/1.4.0/bundle/zindex.css':    ['<%= bootstrap.less.zindex %>'],
+          'test/result/1.4.0/bundle/misc.css':      ['<%= bootstrap.less.misc %>'],
+          'test/result/1.4.0/bundle/util.css':      ['<%= bootstrap.less.util %>']
+        }
+      },
+      bundles_1_3_3: {
+        version: './test/versions/1.3.3',
+        files: {
+          'test/result/1.3.3/bundle/bootstrap.css': ['<%= bootstrap.lib %>'],
+          'test/result/1.3.3/bundle/core.css':      ['<%= bootstrap.less.core %>'],
+          'test/result/1.3.3/bundle/common.css':    ['<%= bootstrap.less.common %>'],
+          'test/result/1.3.3/bundle/nav.css':       ['<%= bootstrap.less.nav %>'],
+          'test/result/1.3.3/bundle/zindex.css':    ['<%= bootstrap.less.zindex %>'],
+          'test/result/1.3.3/bundle/misc.css':      ['<%= bootstrap.less.misc %>'],
+          'test/result/1.3.3/bundle/util.css':      ['<%= bootstrap.less.util %>']
+        }
       },
 
       example: {
@@ -49,13 +107,13 @@ module.exports = function(grunt) {
       },
 
       compression: {
-        src:  ['<%= less.compression %>'],
+        src:  '<%= less.compression %>',
         dest: 'test/result/compression'
       },
 
       debug: {
         options: {
-          paths:   ['<%= less.debug.import %>']
+          paths: ['<%= less.debug.import %>']
         },
         src:  '<%= less.debug.linenumbers %>',
         dest: 'test/result/debug'
@@ -145,13 +203,11 @@ module.exports = function(grunt) {
       }
     },
 
-
     // Run simple unit tests to detect changes in CSS files.
     nodeunit: {
       tests: ['test/fixtures/*_test.js'],
       less:  ['less/test/*.js']
     },
-
 
     jshint: {
       tests: ['test/test.js'],
@@ -175,26 +231,9 @@ module.exports = function(grunt) {
 
     clean: {
       // Clear out example files before creating new ones.
-      tests: { src: 'test/result' }
+      tests: { src: 'test/actual' }
     },
 
-    // Internal task to manage README's across projects.
-    assemble: {
-      readme: {
-        options: {
-          today: '<%= grunt.template.today() %>',
-          changelog: grunt.file.readYAML('CHANGELOG'),
-          roadmap: grunt.file.readYAML('ROADMAP'),
-          docs: grunt.file.readYAML('docs/docs.yml'),
-          partials: ['docs/*.md','docs/templates/snippets/*.md'],
-          data: [],
-          ext: '.md'
-        },
-        files: {
-          '.': ['docs/templates/README.hbs']
-        }
-      }
-    },
     watch: {
       project: {
         files: ['test/**/*.{less,json,js}'],
@@ -215,6 +254,12 @@ module.exports = function(grunt) {
   // Default tasks to be run.
   grunt.registerTask('default', [
     'clean:tests',
+    'styles:less_1_3_2',
+    'styles:less_1_3_3',
+    'styles:less_1_2_0',
+    'styles:less_1_4_0',
+
+    'styles:example',
     'styles:all',
     'styles:glob',
     'styles:compression',
@@ -225,19 +270,9 @@ module.exports = function(grunt) {
   ]);
 
   // Tests to be run.
-  grunt.registerTask('readme', [
-    'assemble'
-  ]);
-
-  // Tests to be run.
   grunt.registerTask('test', [
     'default',
     'jshint',
     'nodeunit:tests'
-  ]);
-
-  // Tests to be run.
-  grunt.registerTask('node', [
-    'nodeunit:less'
   ]);
 };

@@ -1,39 +1,20 @@
 /*!
  * Bootstrap v3.0.0
  *
- * Copyright 2012 Twitter, Inc
+ * Copyright 2013 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
-.clearfix {
-  *zoom: 1;
-  &:after {
-    content: '';
-    display: block;
-    clear: both;
-    height: 0;
-  }
-}
-
-.foo {
-  &:extend(.clearfix all);
-  color: red;
-}
-
-.bar {
-  &:extend(.clearfix all);
-  color: blue;
-}
-
 // Core variables and mixins
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "variables.less";
 @import "mixins.less";
 
 // Reset
 @import "normalize.less";
+@import "print.less";
 
 // Core CSS
 @import "scaffolding.less";
@@ -69,7 +50,8 @@
 @import "alerts.less";
 @import "thumbnails.less";
 @import "media.less";
-@import "counters.less";
+@import "labels.less";
+@import "badges.less";
 @import "progress_bars.less";
 @import "accordion.less";
 @import "carousel.less";
@@ -78,4 +60,3 @@
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
 @import "responsive_utilities.less";
-
