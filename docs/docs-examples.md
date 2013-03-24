@@ -2,7 +2,7 @@
 #### Compile
 
 ```javascript
-styles: {
+less: {
   selectors_test: {
     files: {
       'selectors.css': ['selectors.less']
@@ -16,7 +16,7 @@ styles: {
 As an alternative to using `@import` to "inline" `.less` files, you can specify an array of `src` paths and they will be concatenated. 
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['reset.less', 'test.less']
@@ -30,7 +30,7 @@ styles: {
 You can specify multiple `destination: [source]` items in `files`.
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['test.less'],
@@ -45,7 +45,7 @@ styles: {
 In this example, the `paths` and `requires` options are used:
 
 ```js
-styles: {
+less: {
   development: {
     options: {
       paths: ['test/fixtures'],

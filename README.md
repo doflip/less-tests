@@ -13,7 +13,7 @@ LESS Tests has many more features than we've been able to document thus far. So 
 **Table of Contents**
 
 - [Getting Started](#getting-started)
-- [The "styles" task](#the-styles-task)
+- [The "less" task](#the-less-task)
   - [Options](#options)
 - [Examples](#usage-examples)
 - [About](#about)
@@ -42,8 +42,8 @@ grunt.loadNpmTasks('less-tests');
 
 When completed, you'll be able to run the various `grunt` commands provided:
 
-#### compile - `grunt styles`
-Runs the Less.js compiler to rebuild the specified `/test/fixtures/*.less` files.  Requires [Less.js](http://github.com/cloudhead/less.js) and [assemble-styles](http://github.com/assemble/assemble-styles).
+#### compile - `grunt less`
+Runs the Less.js compiler to rebuild the specified `/test/fixtures/*.less` files.  Requires [Less.js](http://github.com/cloudhead/less.js) and [assemble-less](http://github.com/assemble/assemble-less).
 
 #### watch - `grunt watch`
 This is a convenience task to "Run predefined tasks whenever watched file patterns are added, changed or deleted". Requires [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch), `npm i grunt-contrib-watch`.
@@ -53,14 +53,14 @@ Should you encounter problems with installing dependencies or running the `grunt
 
 
 
-## The "styles" task
+## The "less" task
 
-In your project's Gruntfile, the `styles` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
+In your project's Gruntfile, the `less` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
 
 ```js
 grunt.initConfig({
   // This is a task
-  styles: {
+  less: {
     options: {
       // Task-specific options go here.
     },
@@ -78,11 +78,11 @@ grunt.initConfig({
     ...
   }
 });
-grunt.loadNpmTasks('styles');
+grunt.loadNpmTasks('assemble-less');
 
 grunt.registerTask('default', [
   'jshint', 
-  'styles'
+  'less'
 ]);
 ```
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
@@ -94,7 +94,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 ### Custom Options
 
-> Options developed specifically for the `assemble-styles` plugin
+> Options developed specifically for the `assemble-less` plugin
 
 
 #### lessrc
@@ -104,7 +104,7 @@ Default value: `null`
 A convenience option for externalizing task options into a `.lessrc` file. If this file is specified, options defined therein will be used. 
 
 ``` javascript
-styles: {
+less: {
   options: grunt.file.readJSON('.lessrc')
 }
 ```
@@ -161,7 +161,7 @@ See the [Less.js documentation](http://github.com/cloudhead/less.js) for more in
 Type: `String|Array`
 Default: _Directory of input files_
 
-Specifies directories to scan for `@import` directives when parsing. The default value is the directory of the specified source files. In other words, the `paths` option allows you to specify paths for your @import statements in the [styles](http://github.com/assemble/styles) task, as an alternative to specifying a path on every `@import` statement that appears throughout your LESS files. So instead of doing this:
+Specifies directories to scan for `@import` directives when parsing. The default value is the directory of the specified source files. In other words, the `paths` option allows you to specify paths for your @import statements in the `less` task, as an alternative to specifying a path on every `@import` statement that appears throughout your LESS files. So instead of doing this:
 
 ``` css
 @import "path/to/my/less/files/mixins/mixins.less";
@@ -222,7 +222,7 @@ Configures `-sass-debug-info` support. Accepts following values: `comments`, `me
 #### Compile
 
 ```javascript
-styles: {
+less: {
   selectors_test: {
     files: {
       'selectors.css': ['selectors.less']
@@ -236,7 +236,7 @@ styles: {
 As an alternative to using `@import` to "inline" `.less` files, you can specify an array of `src` paths and they will be concatenated. 
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['reset.less', 'test.less']
@@ -250,7 +250,7 @@ styles: {
 You can specify multiple `destination: [source]` items in `files`.
 
 ```javascript
-styles: {
+less: {
   dist: {
     files: {
       'test.css': ['test.less'],
@@ -265,7 +265,7 @@ styles: {
 In this example, the `paths` and `requires` options are used:
 
 ```js
-styles: {
+less: {
   development: {
     options: {
       paths: ['test/fixtures'],
@@ -307,11 +307,11 @@ For more on glob pattern syntax, see the [node-glob](https://github.com/isaacs/n
 
 ## About
 
-This project uses the extremely flexible [assemble-styles](http://github.com/assemble/assemble-styles) Grunt plugin for compiling LESS to CSS. The `styles` plugin leverages JSON and underscore for defining any number of LESS "bundles", UI components, compressed stylesheets or themes.
+This project uses the extremely flexible [assemble-less](http://github.com/assemble/assemble-less) Grunt plugin for compiling LESS to CSS. The `less` plugin leverages JSON and underscore for defining any number of LESS "bundles", UI components, compressed stylesheets or themes.
 
 ### Companion projects
 * [assemble](http://github.com/assemble/assemble): a Grunt plugin for **quickly launching static web projects** by emphasizing a strong separation of concerns between structure, style, content and configuration.
-* [assemble-styles](http://github.com/upside/less-tests): a LESS / CSS test-suite that uses [assemble-styles](http://github.com/assemble/assemble-styles) to enable you to run any kind of test on LESS stylesheets.
+* [assemble-less](http://github.com/upside/less-tests): a LESS / CSS test-suite that uses [assemble-less](http://github.com/assemble/assemble-less) to enable you to run any kind of test on LESS stylesheets.
 
 
 ### Credit
@@ -362,7 +362,7 @@ Copyright 2013 Assemble
 ---
 Authored by [Jon Schlinkert](https://github.com/jonschlinkert)
 
-_This file was generated using Grunt and [assemble](http://github.com/assemble/assemble) on Sun Mar 24 2013 14:33:25._
+_This file was generated using Grunt and [assemble](http://github.com/assemble/assemble) on Sun Mar 24 2013 14:58:37._
 
 
 
