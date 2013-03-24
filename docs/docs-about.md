@@ -1,3 +1,11 @@
+
 This project uses the extremely flexible [assemble-styles](http://github.com/assemble/assemble-styles) Grunt plugin for compiling LESS to CSS. The `styles` plugin leverages JSON and underscore for defining any number of LESS "bundles", UI components, compressed stylesheets or themes.
 
-Visit [assemble-styles](http://github.com/assemble/styles/wiki) for more information.
+### Companion projects
+* [assemble](http://github.com/assemble/assemble): a Grunt plugin for **quickly launching static web projects** by emphasizing a strong separation of concerns between structure, style, content and configuration.
+* [assemble-styles](http://github.com/upside/less-tests): a LESS / CSS test-suite that uses [assemble-styles](http://github.com/assemble/assemble-styles) to enable you to run any kind of test on LESS stylesheets.
+
+
+### Credit
+This [Grunt.js](http://github.com/gruntjs/grunt) plugin and some of the documentation on this page, is derived from [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less), authored by [Tyler Kellen](https://github.com/tkellen). This plugin was modified for this project to `concat` LESS files first, and then compile them into CSS files. This allows for prepending globally required LESS files, and it also adds the ability to build out individual CSS files, rather than building a single conctatenated file.
+

@@ -1,3 +1,4 @@
+
 In your project's Gruntfile, the `styles` task is already configured with a number of build `targets`. This is for convenience to show you how to create your own tests:
 
 ```js
@@ -30,17 +31,4 @@ grunt.registerTask('default', [
 ```
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
-#### Fixtures
-`.less` source files.
 
-TBC...
-
-#### Expected
-`.css` files.
-
-TBC...
-
-#### Result
-Actual compiled `.css` files.
-
-TBC...

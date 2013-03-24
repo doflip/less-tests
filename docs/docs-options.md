@@ -1,5 +1,68 @@
 
-These options will be passed through directly to [Less.js][]. See the [Less.js documentation](http://github.com/cloudhead/less.js) for a list of supported options.
+### Custom Options
+
+> Options developed specifically for the `assemble-styles` plugin
+
+
+#### lessrc
+Type: `String`
+Default value: `null`
+
+A convenience option for externalizing task options into a `.lessrc` file. If this file is specified, options defined therein will be used. 
+
+``` javascript
+styles: {
+  options: grunt.file.readJSON('.lessrc')
+}
+```
+The `.lessrc` file must be valid JSON and looks something like this:
+
+``` json
+{
+  "require": null,
+  "concat": false,
+  "compress": false,
+  "yuicompress": false,
+  "optimization": 03,
+  "strictImports": true,
+  "dumpLineNumbers": false,
+  "strictMaths": false,
+  "strictUnits": false
+}
+```
+
+#### require
+Type: `String|Array`
+Default: _empty string_
+
+Specified files will be _prepended_ to the beginning of src files, **_not_** to the concatenated output. This feature is useful for "inlining" globaly-required LESS files, such as `variables` or `mixins`, so that _they do not need to be referenced with `@import` statements inside any individual files_.
+
+#### concat
+Type: `Boolean`
+Default: _true_
+
+Concatenate all source files by default. If you change the value to false, all source files will compile into individual files.
+
+#### version
+Type: `String`
+Default: _less_
+
+Specify the version of Less.js that you wish to use for compiling to CSS. Useful for testing.
+
+
+#### globals (under consideration)
+Type: `Object`
+Default: _null_
+
+Data object for defining global variables inside the Gruntfile which will be accessible in LESS files.  
+
+
+
+### Standard Options
+
+> These options will be passed through directly to [Less.js](http://github.com/cloudhead/less.js)
+
+See the [Less.js documentation](http://github.com/cloudhead/less.js) for more info about supported options.
 
 #### paths
 Type: `String|Array`
@@ -55,37 +118,7 @@ Force strict evaluation of units. If set to `false` the compiler will not throw 
 Type: `String`
 Default: _false_
 
-Configures -sass-debug-info support.
+Configures `-sass-debug-info` support. Accepts following values: `comments`, `mediaquery`, `all`.
 
-Accepts following values: `comments`, `mediaquery`, `all`.
-
-
-
-## Custom Options
-
-#### require
-Type: `String|Array`
-Default: _empty string_
-
-Specified files will be _prepended_ to the beginning of src files, **_not_** to the concatenated output. This feature is useful for "inlining" globaly-required LESS files, such as `variables` or `mixins`, so that _they do not need to be referenced with `@import` statements inside any individual files_.
-
-#### concat
-Type: `Boolean`
-Default: _true_
-
-Concatenate all source files by default. If you change the value to false, all source files will compile into individual files.
-
-#### lessrc
-{{> externalize-options.md }}
-
-
-
-### Under Consideration
-
-#### globals
-Type: `Object`
-Default: _null_
-
-Data object for defining global variables inside the Gruntfile which will be accessible in LESS files. Templates can be used to 
 
 ---

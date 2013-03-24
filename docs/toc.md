@@ -2,9 +2,10 @@
 
 - [Getting Started](#getting-started)
 - [The "styles" task](#the-styles-task)
-- [Options](#options)
+  - [Options](#options)
 - [Examples](#usage-examples)
 - [About](#about)
 - [Contributing](#contributing)
 - [Authors](#authors)
+- [Credit](#credit)
 - [Release History](#release-history)

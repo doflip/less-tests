@@ -1,7 +1,4 @@
-**Contributions are welcome!**. Here's how you can help:
 
-* Did you find an **undocumented feature** of LESS? Tell us so we can add tests for it and give you credit!
-* Ideas for using existing JavaScript/node.js test suites for testing LESS or CSS. 
-* Pull requests with more tests!
+Want to help make **less-tests** even better? All constructive feedback and contributions are welcome, so please consider contributing!  We can always use help creating, tests, documentation or resolving [Issues](https://github.com/upstage/less-tests/issues), but if you have other ideas for how you can help, Brian and I would love to hear them!
 
-Whatever your idea is, we'd love to hear about it. Please create an [Issue](https://github.com/upstage/less-tests/issues), and when applicable please put together an example on [less2css.org](http://less2css.org) and include a link to your example.
+[https://github.com/upstage/less-tests/issues](http://github.com/upstage/less-tests/issues)
